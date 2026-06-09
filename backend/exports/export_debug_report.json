@@ -1,0 +1,9 @@
+{
+  "export_id": "4",
+  "absolute_path": "C:\\Users\\ansha\\Downloads\\new app\\backend\\exports\\export_1_08cc2eac83ee472d9f9ddeb0df309030.csv",
+  "file_exists": true,
+  "file_size": 234,
+  "mime_type": "text/csv",
+  "download_url": "/api/exports/download/export_1_08cc2eac83ee472d9f9ddeb0df309030.csv",
+  "can_read": true
+}
