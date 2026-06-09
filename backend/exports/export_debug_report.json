@@ -1,9 +1,9 @@
 {
-  "export_id": "4",
-  "absolute_path": "C:\\Users\\ansha\\Downloads\\new app\\backend\\exports\\export_1_08cc2eac83ee472d9f9ddeb0df309030.csv",
+  "export_id": "7",
+  "absolute_path": "C:\\Users\\ansha\\Downloads\\data consolidator\\backend\\exports\\export_3_e6d78cc77cf44e28a2dfac1424283f6a.csv",
   "file_exists": true,
-  "file_size": 234,
+  "file_size": 3802,
   "mime_type": "text/csv",
-  "download_url": "/api/exports/download/export_1_08cc2eac83ee472d9f9ddeb0df309030.csv",
+  "download_url": "/api/exports/download/export_3_e6d78cc77cf44e28a2dfac1424283f6a.csv",
   "can_read": true
 }
