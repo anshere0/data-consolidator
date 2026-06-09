@@ -40,7 +40,7 @@ export default function LoginPage() {
         const params = new URLSearchParams();
         params.append("username", username);
         params.append("password", password);
-        
+
         const res = await request("POST", "/auth/login", params, true);
         login(res.access_token, res.user);
       }
@@ -62,8 +62,8 @@ export default function LoginPage() {
             {isRegister ? "Create Admin Account" : "Access Console"}
           </h1>
           <p className="text-sm text-slate-400 mt-1">
-            {isRegister 
-              ? "Set up database owner credentials" 
+            {isRegister
+              ? "Set up database owner credentials"
               : "Sign in to consolidate files and generate spreadsheets"}
           </p>
         </div>

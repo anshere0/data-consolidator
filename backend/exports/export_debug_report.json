@@ -1,9 +1,0 @@
-{
-  "export_id": "2",
-  "absolute_path": "C:\\Users\\ansha\\Downloads\\data consolidator\\backend\\exports\\export_2_a2ac305980ee41ae9bd3643b1dac0c36.xlsx",
-  "file_exists": true,
-  "file_size": 8248,
-  "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-  "download_url": "/api/exports/download/export_2_a2ac305980ee41ae9bd3643b1dac0c36.xlsx",
-  "can_read": true
-}

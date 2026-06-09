@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Database
+*.db
+
+# Uploads & exports
+backend/uploads/
+backend/exports/
+
+# Environment files
+.env
+.env.local
+
+# Node
+node_modules/
+
+# Next.js
+.next/
+
+# Logs
+*.log
+
+backend/uploads/
+backend/exports/
+
+__pycache__/
+*.pyc
+*.db
+
+.env
+.env.local
+
+node_modules/
+.next/
