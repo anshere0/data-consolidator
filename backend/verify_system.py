@@ -2,13 +2,13 @@ import os
 import shutil
 import pandas as pd
 from sqlalchemy.orm import Session
-from backend.app.core.config import settings
-from backend.app.core.database import Base, engine, SessionLocal
-from backend.app.models.models import User, Dataset, DatasetColumn, DatasetRow, File, Export
-from backend.app.services.file_processor import FileProcessor
-from backend.app.services.merge_engine import MergeEngine
-from backend.app.services.export_service import ExportService
-from backend.app.core.security import get_password_hash
+from app.core.config import settings
+from app.core.database import Base, engine, SessionLocal
+from app.models.models import User, Dataset, DatasetColumn, DatasetRow, File, Export
+from app.services.file_processor import FileProcessor
+from app.services.merge_engine import MergeEngine
+from app.services.export_service import ExportService
+from app.core.security import get_password_hash
 
 def main():
     print("==================================================")

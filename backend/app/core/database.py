@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
-from backend.app.core.config import settings
+from app.core.config import settings
 
 # For SQLite, we need to allow access from multiple threads
 connect_args = {}

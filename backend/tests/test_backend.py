@@ -5,13 +5,13 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from backend.app.core.config import settings
-from backend.app.core.database import Base, get_db
-from backend.app.main import app
-from backend.app.models.models import User, Dataset, DatasetColumn, DatasetRow, File, Export
-from backend.app.services.file_processor import FileProcessor
-from backend.app.services.merge_engine import MergeEngine
-from backend.app.services.export_service import ExportService
+from app.core.config import settings
+from app.core.database import Base, get_db
+from app.main import app
+from app.models.models import User, Dataset, DatasetColumn, DatasetRow, File, Export
+from app.services.file_processor import FileProcessor
+from app.services.merge_engine import MergeEngine
+from app.services.export_service import ExportService
 
 # Set up testing database
 SQLALCHEMY_DATABASE_URL = "sqlite:///backend/test_data.db"
@@ -35,7 +35,7 @@ def setup_db():
     Base.metadata.create_all(bind=engine)
     # Seed test admin
     db = TestingSessionLocal()
-    from backend.app.core.security import get_password_hash
+    from app.core.security import get_password_hash
     test_user = User(
         username="testadmin",
         hashed_password=get_password_hash("testpass"),

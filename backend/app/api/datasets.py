@@ -3,10 +3,10 @@ from sqlalchemy.orm import Session
 from typing import List, Dict, Any, Optional
 import datetime
 
-from backend.app.core.database import get_db
-from backend.app.core.security import get_current_user
-from backend.app.models.models import User, Dataset, DatasetColumn, DatasetRow, ActivityLog
-from backend.app.schemas.schemas import (
+from app.core.database import get_db
+from app.core.security import get_current_user
+from app.models.models import User, Dataset, DatasetColumn, DatasetRow, ActivityLog
+from app.schemas.schemas import (
     DatasetResponse,
     ColumnResponse,
     ColumnUpdate,
@@ -17,7 +17,7 @@ from backend.app.schemas.schemas import (
     DuplicateReviewResponse,
     DuplicateGroup
 )
-from backend.app.services.merge_engine import MergeEngine
+from app.services.merge_engine import MergeEngine
 
 router = APIRouter(prefix="/datasets", tags=["Datasets"])
 

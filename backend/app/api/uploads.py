@@ -4,12 +4,12 @@ import shutil
 from fastapi import APIRouter, Depends, UploadFile, File as FastAPIFile, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
-from backend.app.core.config import settings
-from backend.app.core.database import get_db
-from backend.app.core.security import get_current_user
-from backend.app.models.models import User, Upload, File as DbFile, ActivityLog
-from backend.app.schemas.schemas import UploadResponse, FileResponse
-from backend.app.services.file_processor import FileProcessor
+from app.core.config import settings
+from app.core.database import get_db
+from app.core.security import get_current_user
+from app.models.models import User, Upload, File as DbFile, ActivityLog
+from app.schemas.schemas import UploadResponse, FileResponse
+from app.services.file_processor import FileProcessor
 
 router = APIRouter(prefix="/uploads", tags=["Uploads"])
 

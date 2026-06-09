@@ -1,8 +1,8 @@
 import logging
 from sqlalchemy.orm import Session
 from typing import List, Dict, Any, Tuple
-from backend.app.models.models import Dataset, DatasetColumn, DatasetRow, File
-from backend.app.services.file_processor import FileProcessor
+from app.models.models import Dataset, DatasetColumn, DatasetRow, File
+from app.services.file_processor import FileProcessor
 
 logger = logging.getLogger(__name__)
 

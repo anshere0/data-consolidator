@@ -1,11 +1,11 @@
 import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from backend.app.core.config import settings
-from backend.app.core.database import engine, Base, SessionLocal
-from backend.app.api import auth, uploads, datasets, exports
-from backend.app.models.models import User
-from backend.app.core.security import get_password_hash
+from app.core.config import settings
+from app.core.database import engine, Base, SessionLocal
+from app.api import auth, uploads, datasets, exports
+from app.models.models import User
+from app.core.security import get_password_hash
 
 # Configure logging
 logging.basicConfig(

@@ -6,12 +6,12 @@ from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 from typing import List
 
-from backend.app.core.config import settings
-from backend.app.core.database import get_db
-from backend.app.core.security import get_current_user
-from backend.app.models.models import User, Export, ActivityLog
-from backend.app.schemas.schemas import ExportResponse
-from backend.app.services.export_service import ExportService
+from app.core.config import settings
+from app.core.database import get_db
+from app.core.security import get_current_user
+from app.models.models import User, Export, ActivityLog
+from app.schemas.schemas import ExportResponse
+from app.services.export_service import ExportService
 
 router = APIRouter(prefix="/exports", tags=["Exports"])
 

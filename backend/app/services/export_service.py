@@ -3,8 +3,8 @@ import uuid
 import logging
 import pandas as pd
 from sqlalchemy.orm import Session
-from backend.app.core.config import settings
-from backend.app.models.models import Dataset, DatasetColumn, DatasetRow, Export
+from app.core.config import settings
+from app.models.models import Dataset, DatasetColumn, DatasetRow, Export
 
 logger = logging.getLogger(__name__)
 
