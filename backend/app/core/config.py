@@ -1,5 +1,11 @@
 import os
 
+BASE_DIR = os.path.dirname(
+    os.path.dirname(
+        os.path.dirname(os.path.abspath(__file__))
+    )
+)
+
 class Settings:
     PROJECT_NAME: str = "Data Consolidation & Master Excel Generator"
     SECRET_KEY: str = os.getenv("SECRET_KEY", "supersecret-jwt-signing-key-for-token-generation-key-key")
@@ -8,10 +14,13 @@ class Settings:
 
     # Database URLs
     # Will use SQLite by default if DATABASE_URL is not set
-    DATABASE_URL: str = os.getenv("DATABASE_URL", "sqlite:///backend/data.db")
+    DATABASE_URL: str = os.getenv(
+        "DATABASE_URL",
+        f"sqlite:///{os.path.join(BASE_DIR, 'data.db').replace(os.sep, '/')}"
+    )
 
     # Storage paths
-    BASE_DIR: str = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    BASE_DIR: str = BASE_DIR
     UPLOAD_DIR: str = os.path.join(BASE_DIR, "uploads")
     EXPORT_DIR: str = os.path.join(BASE_DIR, "exports")
 
@@ -21,6 +30,10 @@ class Settings:
 
 settings = Settings()
 
+# Startup diagnostics
+print("Current working directory:", os.getcwd())
+print("Database URL:", settings.DATABASE_URL)
+print("Database file exists:", os.path.exists(os.path.join(BASE_DIR, "data.db")))
 
 # Ensure directories exist
 os.makedirs(settings.UPLOAD_DIR, exist_ok=True)

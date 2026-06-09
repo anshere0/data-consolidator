@@ -1,9 +1,9 @@
 {
-  "export_id": "1",
-  "absolute_path": "C:\\Users\\ansha\\Downloads\\data consolidator\\backend\\exports\\export_1_eee66af1f5754aa8a000ed7fdcbf662f.csv",
+  "export_id": "2",
+  "absolute_path": "C:\\Users\\ansha\\Downloads\\data consolidator\\backend\\exports\\export_2_a2ac305980ee41ae9bd3643b1dac0c36.xlsx",
   "file_exists": true,
-  "file_size": 1664,
-  "mime_type": "text/csv",
-  "download_url": "/api/exports/download/export_1_eee66af1f5754aa8a000ed7fdcbf662f.csv",
+  "file_size": 8248,
+  "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+  "download_url": "/api/exports/download/export_2_a2ac305980ee41ae9bd3643b1dac0c36.xlsx",
   "can_read": true
 }

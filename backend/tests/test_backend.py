@@ -14,7 +14,9 @@ from app.services.merge_engine import MergeEngine
 from app.services.export_service import ExportService
 
 # Set up testing database
-SQLALCHEMY_DATABASE_URL = "sqlite:///backend/test_data.db"
+BASE_DIR = settings.BASE_DIR
+TEST_DB_PATH = os.path.join(BASE_DIR, "test_data.db")
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{TEST_DB_PATH.replace(os.sep, '/')}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
@@ -50,8 +52,8 @@ def setup_db():
     # Tear down database
     Base.metadata.drop_all(bind=engine)
     engine.dispose()
-    if os.path.exists("backend/test_data.db"):
-        os.remove("backend/test_data.db")
+    if os.path.exists(TEST_DB_PATH):
+        os.remove(TEST_DB_PATH)
     # Clean up test exports
     if os.path.exists(settings.EXPORT_DIR):
         shutil.rmtree(settings.EXPORT_DIR)
