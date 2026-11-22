@@ -1,416 +1,108 @@
-# Data Consolidator
+# 📑 Data Consolidator
 
-A powerful web application that automatically extracts, consolidates, reviews, and exports data from multiple Excel, CSV, and PDF files into a single master dataset.
+**Automated Multi-Format Document Ingestion, Column Normalization, Interactive Review, and Master Spreadsheet Consolidation Engine**
 
-Designed to eliminate manual copy-pasting, reduce processing time, and provide a clean workflow for creating consolidated spreadsheets from diverse data sources.
-
----
-
-## Overview
-
-Data Consolidator allows users to upload multiple files containing tabular data and automatically merges them into a unified dataset.
-
-The application:
-
-* Extracts data from Excel files (`.xlsx`, `.xls`)
-* Processes CSV files (`.csv`)
-* Detects and extracts tables from PDF documents (`.pdf`)
-* Normalizes column structures
-* Consolidates all records into a master dataset
-* Provides a review interface before export
-* Generates downloadable Excel files
+[![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![Next.js 16](https://img.shields.io/badge/Frontend-Next.js_16-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19.2-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
+[![Python Pandas](https://img.shields.io/badge/ETL-Pandas%20%2F%20OpenPyXL-150458?style=for-the-badge&logo=pandas)](https://pandas.pydata.org/)
+[![PDF Plumber](https://img.shields.io/badge/PDF_Extraction-PyMuPDF%20%2F%20PDFPlumber-FF5722?style=for-the-badge)](https://pymupdf.readthedocs.io/)
+[![Tailwind CSS 4](https://img.shields.io/badge/UI-Tailwind_CSS_4-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
 ---
 
-## Features
+## 📌 Executive Summary
 
-### Multi-Format File Support
+Organizations frequently receive critical tabular business data scattered across incompatible formats: legacy Excel workbooks (`.xls`, `.xlsx`), comma-separated files (`.csv`), and locked PDF documents. Consolidating these records manually takes hours and introduces human copy-paste errors.
 
-Upload and process:
-
-* Excel (.xlsx, .xls)
-* CSV (.csv)
-* PDF (.pdf)
+**Data Consolidator** is a modern full-stack data pipeline and web application that automates extraction, column alignment, interactive data cleansing, and master export. Users drag and drop batches of heterogenous files; the backend parses tables, intelligently reconciles differing header schemas, presents an editable review grid, and exports a unified master Excel file.
 
 ---
 
-### Intelligent Data Extraction
+## 🔄 Data Pipeline Workflow
 
-The system automatically:
-
-* Detects tables in uploaded files
-* Extracts rows and columns
-* Preserves original values
-* Handles different file structures
-* Combines data into a single dataset
-
----
-
-### Data Review Dashboard
-
-Before exporting, users can:
-
-* Review extracted records
-* Inspect consolidated data
-* Validate results
-* Check row and column counts
-
----
-
-### Excel Export
-
-Generate a clean master spreadsheet with:
-
-* All consolidated records
-* Preserved column names
-* Structured tabular output
-* One-click download
-
----
-
-### Authentication System
-
-Secure user authentication includes:
-
-* User registration
-* Login functionality
-* Protected routes
-* Session management
-
----
-
-### Modern Web Interface
-
-Built with:
-
-* Responsive design
-* Clean dashboard experience
-* Fast file uploads
-* Real-time processing feedback
-
----
-
-## Tech Stack
-
-### Frontend
-
-* Next.js
-* React
-* TypeScript
-* Tailwind CSS
-
-### Backend
-
-* FastAPI
-* Python
-
-### Database
-
-* SQLite (Development)
-* SQLAlchemy ORM
-
-### File Processing
-
-* Pandas
-* OpenPyXL
-* PDF Table Extraction Libraries
-
-### Deployment
-
-* Frontend: Vercel
-* Backend: Render
-
----
-
-## Project Structure
-
-```bash
-data-consolidator/
-│
-├── frontend/
-│   ├── app/
-│   ├── components/
-│   ├── lib/
-│   ├── public/
-│   └── styles/
-│
-├── backend/
-│   ├── app/
-│   │   ├── api/
-│   │   ├── core/
-│   │   ├── models/
-│   │   ├── services/
-│   │   └── schemas/
-│   │
-│   ├── uploads/
-│   ├── exports/
-│   └── requirements.txt
-│
-├── README.md
-└── .gitignore
+```mermaid
+flowchart LR
+    A["Uploaded Files<br/>(Excel, CSV, PDF)"] --> B["Multi-Format Parser<br/>(pdfplumber / openpyxl / pandas)"]
+    B --> C["Schema Normalizer<br/>& Merge Engine"]
+    C --> D[("Staging Database<br/>SQLite / PostgreSQL")]
+    D --> E["Next.js Interactive Review Grid<br/>(Inline Editing & Validation)"]
+    E --> F["Master Export Service<br/>(Unified .xlsx Workbook)"]
 ```
 
 ---
 
-## Workflow
+## ✨ Key Capabilities
+
+- **Intelligent Multi-Format Ingestion**:
+  - **Excel (`.xlsx`, `.xls`)**: Multi-sheet extraction via `openpyxl` and `xlrd`.
+  - **CSV**: Encoding auto-detection (`chardet`) with dynamic delimiter parsing.
+  - **PDF Documents**: High-accuracy table boundary detection using `pdfplumber` and `PyMuPDF`.
+- **Heuristic Schema Alignment**: Merges datasets with differing column names (e.g. mapping `"Client Name"`, `"Customer"`, and `"Name"` to a canonical schema).
+- **Interactive Review Interface**: Web-based editable grid allowing operators to audit, filter, correct typos, and delete erroneous rows before finalizing the export.
+- **Enterprise-Grade Backend**: FastAPI service structured with Pydantic validation schemas, SQLAlchemy ORM, and JWT authentication (`pyjwt`, `bcrypt`).
+
+---
+
+## 📂 Repository Layout
 
 ```text
-Upload Files
-      │
-      ▼
-Extract Tables
-      │
-      ▼
-Normalize Data
-      │
-      ▼
-Merge Records
-      │
-      ▼
-Review Dataset
-      │
-      ▼
-Export Master Excel
+data-consolidator/
+├── backend/                    # Python FastAPI Backend
+│   ├── app/
+│   │   ├── api/                # Endpoints (auth, datasets, uploads, exports)
+│   │   ├── core/               # Configuration, security, database connection
+│   │   ├── models/             # SQLAlchemy dataset and row models
+│   │   ├── schemas/            # Pydantic request/response schemas
+│   │   ├── services/           # Merge engine, file processor, export service
+│   │   └── main.py             # FastAPI entrypoint
+│   ├── tests/                  # PyTest backend test suite
+│   ├── verify_system.py        # System smoke test script
+│   └── requirements.txt
+├── frontend/                   # Next.js 16 Web Dashboard
+│   ├── src/
+│   │   ├── app/                # App router views and consolidation grid
+│   │   ├── components/         # Upload dropzone, data review table
+│   │   └── utils/              # API fetch client
+│   ├── package.json
+│   └── tsconfig.json
+├── run.bat                     # Windows one-click local launcher
+└── README.md
 ```
 
 ---
 
-## Installation
+## 🚀 Quickstart Guide
 
-### Clone Repository
-
-```bash
-git clone https://github.com/your-username/data-consolidator.git
-
-cd data-consolidator
+### Option 1: Quickstart (Windows)
+Double-click `run.bat` or run:
+```cmd
+run.bat
 ```
 
----
+### Option 2: Manual Setup
 
-## Backend Setup
-
-Navigate to backend:
-
+#### 1. Backend Service
 ```bash
 cd backend
-```
-
-Create virtual environment:
-
-```bash
-python -m venv venv
-```
-
-Activate environment:
-
-### Windows
-
-```bash
-venv\Scripts\activate
-```
-
-### Mac/Linux
-
-```bash
-source venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
+python -m venv .venv
+source .venv/bin/activate # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
 ```
+API Documentation: [http://localhost:8000/docs](http://localhost:8000/docs)
 
-Run server:
-
+#### 2. Frontend Interface
 ```bash
-uvicorn app.main:app --reload
-```
-
-Backend runs on:
-
-```text
-http://localhost:8000
-```
-
-API documentation:
-
-```text
-http://localhost:8000/docs
-```
-
----
-
-## Frontend Setup
-
-Navigate to frontend:
-
-```bash
-cd frontend
-```
-
-Install dependencies:
-
-```bash
+cd ../frontend
 npm install
-```
-
-Create environment file:
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:8000
-```
-
-Run development server:
-
-```bash
 npm run dev
 ```
-
-Frontend runs on:
-
-```text
-http://localhost:3000
-```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## Environment Variables
-
-### Backend
-
-```env
-SECRET_KEY=your-secret-key
-
-DATABASE_URL=sqlite:///./app.db
-
-ACCESS_TOKEN_EXPIRE_MINUTES=60
-```
-
-### Frontend
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:8000
-```
-
----
-
-## API Endpoints
-
-### Authentication
-
-```http
-POST /api/auth/register
-POST /api/auth/login
-GET  /api/auth/me
-```
-
-### File Processing
-
-```http
-POST /api/upload
-GET  /api/data/columns
-GET  /api/data/rows
-```
-
-### Export
-
-```http
-GET /api/export
-```
-
----
-
-## Deployment
-
-### Backend (Render)
-
-1. Create a new Web Service on Render.
-2. Connect GitHub repository.
-3. Set root directory to backend.
-4. Install command:
-
-```bash
-pip install -r requirements.txt
-```
-
-5. Start command:
-
-```bash
-uvicorn app.main:app --host 0.0.0.0 --port $PORT
-```
-
-6. Add environment variables.
-
----
-
-### Frontend (Vercel)
-
-1. Import project from GitHub.
-2. Set root directory to frontend.
-3. Add environment variable:
-
-```env
-NEXT_PUBLIC_API_URL=https://your-render-url.onrender.com
-```
-
-4. Deploy.
-
----
-
-## Use Cases
-
-* Financial statement consolidation
-* Sales report aggregation
-* Vendor data merging
-* Inventory management
-* Business reporting
-* Academic data compilation
-* Administrative record management
-
----
-
-## Future Enhancements
-
-* AI-powered column matching
-* Duplicate detection
-* Advanced data cleaning
-* Multi-sheet export
-* Scheduled imports
-* Cloud storage integrations
-* Data validation rules
-* Processing history dashboard
-
----
-
-## Security
-
-* Password hashing
-* JWT authentication
-* Protected API routes
-* Input validation
-* Secure file handling
-
----
-
-## Performance Goals
-
-* Fast file uploads
-* Efficient table extraction
-* Large dataset support
-* Optimized export generation
-* Responsive user experience
-
----
-
-## License
-
-This project is licensed under the MIT License.
-
----
-
-## Author
-
-**Ansh Arora**
-
-Built to simplify data consolidation workflows by transforming scattered spreadsheets and PDF tables into a single organized master Excel file with minimal effort.
+## 👤 Author
+**Ansh Arora**  
+- GitHub: [@anshere0](https://github.com/anshere0)  
+- LinkedIn: [Ansh Arora](https://www.linkedin.com/in/ansh-arora0/)
